@@ -1,0 +1,165 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+    --font-sans:
+        'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+    --color-chart-6: var(--chart-6);
+    --color-chart-7: var(--chart-7);
+    --color-chart-8: var(--chart-8);
+
+    --color-zari: var(--zari);
+    --color-zari-soft: var(--zari-soft);
+    --color-positive: var(--positive);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+    /* Indigo & zari: indigo dye with gold thread, from hand-loom textiles. */
+    --background: #f4f3f9;
+    --foreground: #1c1a33;
+    --card: #ffffff;
+    --card-foreground: #1c1a33;
+    --popover: #ffffff;
+    --popover-foreground: #1c1a33;
+    --primary: #3b3591;
+    --primary-foreground: #ffffff;
+    --secondary: #eceaf6;
+    --secondary-foreground: #2e2a6b;
+    --muted: #efeef6;
+    --muted-foreground: #5e5b78;
+    --accent: #eceaf6;
+    --accent-foreground: #2e2a6b;
+    --destructive: #c62828;
+    --destructive-foreground: #c62828;
+    --border: #e3e1ee;
+    --input: #d6d3e6;
+    --ring: #8f89d6;
+    --zari: #b8871f;
+    --zari-soft: #f6edd5;
+    --positive: #1b7f4b;
+    /* Validated categorical chart slots (light surface #ffffff). */
+    --chart-1: #2a78d6;
+    --chart-2: #eb6834;
+    --chart-3: #1baf7a;
+    --chart-4: #eda100;
+    --chart-5: #e87ba4;
+    --chart-6: #008300;
+    --chart-7: #6250d6;
+    --chart-8: #e34948;
+    --radius: 0.75rem;
+    --sidebar: #1f1b4d;
+    --sidebar-foreground: #d9d7f0;
+    --sidebar-primary: #d9ae4a;
+    --sidebar-primary-foreground: #1f1b4d;
+    --sidebar-accent: #2e2a6b;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: #2e2a6b;
+    --sidebar-ring: #d9ae4a;
+}
+
+.dark {
+    --background: #12111f;
+    --foreground: #ecebf7;
+    --card: #1c1b2e;
+    --card-foreground: #ecebf7;
+    --popover: #1c1b2e;
+    --popover-foreground: #ecebf7;
+    --primary: #a9a4f2;
+    --primary-foreground: #12111f;
+    --secondary: #26243f;
+    --secondary-foreground: #ecebf7;
+    --muted: #26243f;
+    --muted-foreground: #a6a3c4;
+    --accent: #2a2848;
+    --accent-foreground: #ecebf7;
+    --destructive: #ef5350;
+    --destructive-foreground: #ef5350;
+    --border: #2f2d4a;
+    --input: #38365a;
+    --ring: #8f89d6;
+    --zari: #d9ae4a;
+    --zari-soft: #3a3020;
+    --positive: #4cc38a;
+    /* Validated categorical chart slots (dark surface #1c1b2e). */
+    --chart-1: #3987e5;
+    --chart-2: #d95926;
+    --chart-3: #199e70;
+    --chart-4: #c98500;
+    --chart-5: #d55181;
+    --chart-6: #008300;
+    --chart-7: #9085e9;
+    --chart-8: #e66767;
+    --sidebar: #0e0d1a;
+    --sidebar-foreground: #cfcde8;
+    --sidebar-primary: #d9ae4a;
+    --sidebar-primary-foreground: #0e0d1a;
+    --sidebar-accent: #1f1d36;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: #1f1d36;
+    --sidebar-ring: #d9ae4a;
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}

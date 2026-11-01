@@ -1,0 +1,66 @@
+# Run DressCost with one command:
+#
+#     docker compose up --build
+#
+# Then open http://localhost:8080 and log in as demo@dresscost.test / password.
+# Telescope (requests, exceptions, queries) is at http://localhost:8080/telescope.
+# Stop with Ctrl+C (or `docker compose down`). Data is kept in the
+# "mysql-data" volume; `docker compose down -v` deletes it.
+
+services:
+    app:
+        build: .
+        ports:
+            - '${APP_PORT:-8080}:8000'
+        environment:
+            APP_NAME: DressCost
+            APP_ENV: local
+            APP_DEBUG: 'false'
+            APP_URL: 'http://localhost:${APP_PORT:-8080}'
+            APP_CURRENCY: LKR
+            LOG_CHANNEL: stderr
+            DB_CONNECTION: mysql
+            DB_HOST: mysql
+            DB_PORT: 3306
+            DB_DATABASE: dresscost
+            DB_USERNAME: dresscost
+            DB_PASSWORD: dresscost
+            SESSION_DRIVER: database
+            CACHE_STORE: database
+            QUEUE_CONNECTION: sync
+            MAIL_MAILER: log
+            SEED_DEMO: 'true'
+            # Telescope at /telescope; it only runs while APP_ENV is local.
+            TELESCOPE_ENABLED: 'true'
+        depends_on:
+            mysql:
+                condition: service_healthy
+        restart: unless-stopped
+
+    mysql:
+        image: mysql:8.4
+        environment:
+            MYSQL_DATABASE: dresscost
+            MYSQL_USER: dresscost
+            MYSQL_PASSWORD: dresscost
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - mysql-data:/var/lib/mysql
+        healthcheck:
+            test:
+                [
+                    'CMD',
+                    'mysqladmin',
+                    'ping',
+                    '-h',
+                    'localhost',
+                    '-uroot',
+                    '-proot',
+                ]
+            interval: 5s
+            timeout: 5s
+            retries: 20
+        restart: unless-stopped
+
+volumes:
+    mysql-data:
